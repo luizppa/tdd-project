@@ -1,38 +1,39 @@
 from selenium import webdriver
 import unittest
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(unittest.TestCase):  
 
-    def test_can_start_a_list_and_retrieve_it_later(self): 
+  def setUp(self):  
+    self.browser = webdriver.Firefox()
+
+  def tearDown(self):  
+    self.browser.quit()
+
+  def test_can_start_a_list_and_retrieve_it_later(self):  
+    # Maria decidiu utilizar o novo app TODO. Ela entra em sua página principal:
+    self.browser.get('http://localhost:8000')
+
+    # Ela nota que o título da página menciona TODO
+    self.assertIn('To-Do', self.browser.title)
+
+    # Ela é convidada a entrar com um item TODO imediatamente
+
+    # Ela digita "Estudar testes funcionais" em uma caixa de texto
+
+    # Quando ela aperta enter, a página atualiza, e mostra a lista
+    # "1: Estudar testes funcionais" como um item da lista TODO
     
-        self.browser = webdriver.Firefox()
-    
-        # Maria decidiu utilizar o novo app TODO. Ela entra em sua página principal:
-        self.browser.get('http://localhost:8000')
+    # Ainda existe uma caixa de texto convidando para adicionar outro item
+    # Ela digita: "Estudar testes de unidade"
 
-        # Ela nota que o título da página menciona TODO
-        self.assertIn('To-Do', self.browser.title)
+    # A página atualiza novamente, e agora mostra ambos os itens na sua lista
 
-        # Ela é convidada a entrar com um item TODO imediatamente
+    # Maria se pergunta se o site vai lembrar da sua lista. Então, ela verifica que
+    # o site gerou uma URL única para ela -- existe uma explicação sobre essa feature
 
-        # Ela digita "Estudar testes funcionais" em uma caixa de texto
+    # Ela visita a URL: a sua lista TODO ainda está armazenada
 
-        # Quando ela aperta enter, a página atualiza, e mostra a lista
-        # "1: Estudar testes funcionais" como um item da lista TODO
-        
-        # Ainda existe uma caixa de texto convidando para adicionar outro item
-        # Ela digita: "Estudar testes de unidade"
+    # Satisfeita, ela vai dormir
 
-        # A página atualiza novamente, e agora mostra ambos os itens na sua lista
-
-        # Maria se pergunta se o site vai lembrar da sua lista. Então, ela verifica que
-        # o site gerou uma URL única para ela -- existe uma explicação sobre essa feature
-
-        # Ela visita a URL: a sua lista TODO ainda está armazenada
-
-        # Satisfeita, ela vai dormir
-        
-        self.browser.quit()
-
-if __name__ == '__main__':
-    unittest.main()
+if __name__ == '__main__':  
+  unittest.main()
