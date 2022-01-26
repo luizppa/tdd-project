@@ -1,0 +1,2 @@
+1 - Testes funcionais são escritos sem conhecimento do código ou implementação (caixa preta) enquanto testes de unidade podem ter conhecimento da implementação das unidades (caixa branca)
+2 - Testes funcionais geralmente são mais caros e lentos que testes de unidade
